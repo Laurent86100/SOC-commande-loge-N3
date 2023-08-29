@@ -9,9 +9,18 @@
            font-family: Arial, sans-serif;
        }
 
-       .header {
+       .header, .footer {
            background: linear-gradient(to bottom, rgb(255, 0, 0), white);
            height: 100px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           border-bottom: 2px solid black;
+           color: white;
+       }
+
+       .header {
+           border-top: 2px solid black;
        }
 
        .information, .commande, .informations-commandes {
@@ -35,7 +44,12 @@
    </script>
 </head>
 <body>
-   <div class="header"></div>
+   <div class="header">
+       <div style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; border: 3px solid black; padding: 10px;">
+           SO Châtellerault<br>
+           Saison 2023/2024
+       </div>
+   </div>
 
    <h1>Commande Loge N3</h1>
 
@@ -106,5 +120,12 @@
        <input type="hidden" name="_subject" value="Nouvelle commande">
        <input type="submit" value="Passer la commande">
    </form>
+
+   <div class="footer">
+       <div style="font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; border: 3px solid black; padding: 10px;">
+           SO Châtellerault<br>
+           Saison 2023/2024
+       </div>
+   </div>
 </body>
 </html>
