@@ -81,6 +81,35 @@
                passerCommandeBtn.disabled = true;
            }
        }
+
+       function createOrderSummary() {
+           var orderSummary = "";
+           var total = 0;
+
+           var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value);
+           var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
+           var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
+
+           if (quantiteBiere > 0) {
+               orderSummary += "Quantité de Bière: " + quantiteBiere + "\n";
+               total += quantiteBiere * 8;
+           }
+
+           if (quantitePlateauCharcuterie > 0) {
+               orderSummary += "Quantité de Plateau Charcuterie: " + quantitePlateauCharcuterie + "\n";
+               total += quantitePlateauCharcuterie * 6;
+           }
+
+           if (quantitePlateauLegumes > 0) {
+               orderSummary += "Quantité de Plateau Légumes: " + quantitePlateauLegumes + "\n";
+               total += quantitePlateauLegumes * 5;
+           }
+
+           orderSummary += "Total: " + total + "€\n";
+
+           var hiddenField = document.getElementById("orderSummary");
+           hiddenField.value = orderSummary;
+       }
    </script>
 </head>
 <body>
@@ -88,7 +117,7 @@
 
    <h1>Commande Loge N3</h1>
 
-   <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="return validateForm();">
+   <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="validateForm(); createOrderSummary();">
       
        <div class="informations-commandes">
           Informations Commandes:
@@ -152,6 +181,7 @@
            <option value="5">5</option>
        </select><br><br>
 
+       <input type="hidden" id="orderSummary" name="Order Summary">
        <input type="hidden" name="_subject" value="Nouvelle commande">
        <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled>
    </form>
