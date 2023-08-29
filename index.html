@@ -69,6 +69,21 @@
            var totalElement = document.getElementById("total");
            totalElement.textContent = "Total: " + total + "€";
        }
+
+       function validateForm() {
+           var nom = document.getElementById("nom").value;
+           var numeroLoge = document.getElementById("numeroLoge").value;
+           var passerCommandeBtn = document.getElementById("passerCommandeBtn");
+
+           if (nom === "" || numeroLoge === "") {
+               alert("Veuillez sélectionner un numéro de loge et/ou entrer un nom.");
+               passerCommandeBtn.disabled = true;
+               return false;
+           } else {
+               passerCommandeBtn.disabled = false;
+               return true;
+           }
+       }
    </script>
 </head>
 <body>
@@ -86,7 +101,7 @@
        <input type="text" id="nom" name="Nom de la commande:" required><br><br>
 
        <label for="numeroLoge">Numéro de loge :</label>
-       <select id="numeroLoge" name="Numéro de loge:">
+       <select id="numeroLoge" name="Numéro de loge:" onchange="validateForm();">
            <option value="" selected disabled>Choisir...</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -111,7 +126,7 @@
            Commande :
        </div>
        <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
-       <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal()">
+       <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -121,7 +136,7 @@
        </select><br>
 
        <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
-       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal()">
+       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -131,7 +146,7 @@
        </select><br>
 
        <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
-       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal()">
+       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -141,7 +156,7 @@
        </select><br><br>
 
        <input type="hidden" name="_subject" value="Nouvelle commande">
-       <input type="submit" value="Passer la commande">
+       <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled>
    </form>
 
    <div class="footer"></div>
