@@ -3,7 +3,7 @@
 <head>
    <title>Commande Loge N3</title>
    <style>
-       .information, .commande {
+       .information, .commande, .informations-commandes {
            font-weight: bold;
            color: red;
            text-decoration: underline;
@@ -17,6 +17,24 @@
        <label for="nom">Nom</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br><br>
 
+       <!-- Nouvelle partie ajoutée -->
+       <label for="numeroLoge">Numéro de loge :</label>
+       <select id="numeroLoge" name="Numéro de loge:">
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+           <option value="6">6</option>
+           <option value="7">7</option>
+           <option value="8">8</option>
+       </select><br><br>
+       <!-- Fin de la nouvelle partie -->
+
+       <div class="informations-commandes">
+           Informations Commandes:
+       </div>
+
        <div class="information">
            Informations :
        </div>
@@ -25,22 +43,6 @@
            Plateau charcuterie 6€<br>
            Plateau légume 5€<br><br>
        </div>
-
-       <!-- Nouvelle partie ajoutée -->
-       <div>
-           <label for="numeroLoge">Numéro de loge :</label>
-           <select id="numeroLoge" name="Numéro de loge:">
-               <option value="1">1</option>
-               <option value="2">2</option>
-               <option value="3">3</option>
-               <option value="4">4</option>
-               <option value="5">5</option>
-               <option value="6">6</option>
-               <option value="7">7</option>
-               <option value="8">8</option>
-           </select><br><br>
-       </div>
-       <!-- Fin de la nouvelle partie -->
 
        <div class="commande">
            Commande :
