@@ -75,13 +75,10 @@
            var numeroLoge = document.getElementById("numeroLoge").value;
            var passerCommandeBtn = document.getElementById("passerCommandeBtn");
 
-           if (nom === "" || numeroLoge === "") {
-               alert("Veuillez sélectionner un numéro de loge et/ou entrer un nom.");
-               passerCommandeBtn.disabled = true;
-               return false;
-           } else {
+           if (nom !== "" && numeroLoge !== "") {
                passerCommandeBtn.disabled = false;
-               return true;
+           } else {
+               passerCommandeBtn.disabled = true;
            }
        }
    </script>
