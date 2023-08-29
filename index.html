@@ -9,11 +9,24 @@
            text-decoration: underline;
        }
    </style>
+   <script>
+       function validateForm() {
+           var numeroLoge = document.getElementById("numeroLoge").value;
+           var quantiteBiere = document.getElementById("quantiteBiere").value;
+           var quantitePlateauCharcuterie = document.getElementById("quantitePlateauCharcuterie").value;
+           var quantitePlateauLegumes = document.getElementById("quantitePlateauLegumes").value;
+
+           if (numeroLoge === "" || (quantiteBiere === "0" && quantitePlateauCharcuterie === "0" && quantitePlateauLegumes === "0")) {
+               alert("Veuillez sélectionner un numéro de loge et/ou ajouter des quantités de commande.");
+               return false;
+           }
+       }
+   </script>
 </head>
 <body>
    <h1>Commande Loge N3</h1>
 
-   <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST">
+   <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="return validateForm();">
       
        <div class="informations-commandes">
            Informations Commandes:
@@ -24,6 +37,7 @@
 
        <label for="numeroLoge">Numéro de loge :</label>
        <select id="numeroLoge" name="Numéro de loge:">
+           <option value="" selected disabled>Choisir...</option>
            <option value="1">1</option>
            <option value="2">2</option>
            <option value="3">3</option>
@@ -38,7 +52,7 @@
            Tarifs et condition de vente :
        </div>
        <div>
-           Pichet de biere 1 litre : 8€<br>
+           Pichet de bière 1 litre : 8€<br>
            Plateau charcuterie : 6€<br>
            Plateau légume : 5€<br><br>
        </div>
