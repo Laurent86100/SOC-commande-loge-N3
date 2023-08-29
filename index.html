@@ -14,10 +14,14 @@
    <h1>Commande Loge N3</h1>
 
    <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST">
+      
+       <div class="informations-commandes">
+           Informations Commandes:
+       </div>
+      
        <label for="nom">Nom</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br><br>
 
-       <!-- Nouvelle partie ajoutée -->
        <label for="numeroLoge">Numéro de loge :</label>
        <select id="numeroLoge" name="Numéro de loge:">
            <option value="1">1</option>
@@ -29,19 +33,14 @@
            <option value="7">7</option>
            <option value="8">8</option>
        </select><br><br>
-       <!-- Fin de la nouvelle partie -->
-
-       <div class="informations-commandes">
-           Informations Commandes:
-       </div>
 
        <div class="information">
-           Informations :
+           Tarifs et condition de vente :
        </div>
        <div>
-           Bière 8€<br>
-           Plateau charcuterie 6€<br>
-           Plateau légume 5€<br><br>
+           Pichet de biere 1 litre : 8€<br>
+           Plateau charcuterie : 6€<br>
+           Plateau légume : 5€<br><br>
        </div>
 
        <div class="commande">
