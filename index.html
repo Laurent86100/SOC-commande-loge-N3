@@ -3,6 +3,17 @@
 <head>
    <title>Commande Loge N3</title>
    <style>
+       body {
+           margin: 0;
+           padding: 0;
+           font-family: Arial, sans-serif;
+       }
+
+       .header {
+           background: linear-gradient(to bottom, rgb(255, 0, 0), white);
+           height: 100px;
+       }
+
        .information, .commande, .informations-commandes {
            font-weight: bold;
            color: red;
@@ -24,6 +35,8 @@
    </script>
 </head>
 <body>
+   <div class="header"></div>
+
    <h1>Commande Loge N3</h1>
 
    <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="return validateForm();">
