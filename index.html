@@ -1,92 +1,68 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Commande Loge N3</title>
-    <style>
-        .information, .commande {
-            font-weight: bold;
-            color: red;
-            text-décoration: underline;
-        }
-    </style>
+   <title>Commande Loge N3</title>
+   <style>
+       .information, .commande {
+           font-weight: bold;
+           color: red;
+           text-decoration: underline;
+       }
+   </style>
 </head>
 <body>
-    <h1>Commande Loge N3</h1>
+   <h1>Commande Loge N3</h1>
 
-    <form id="sandwich-form">
-        <label for="nom">Nom :</label>
-        <input type="text" id="nom" name="nom" required><br><br>
+   <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST">
+       <label for="nom">Nom :</label>
+       <input type="text" id="nom" name="Nom" required><br><br>
 
-        <div class="information">
-            Informations :
-        </div>
-        <div>
-            Bière 8€<br>
-            Plateau charcuterie 6€<br>
-            Plateau légume 5€<br><br>
-        </div>
+       <div class="information">
+           Informations :
+       </div>
+       <div>
+           Bière 8€<br>
+           Plateau charcuterie 6€<br>
+           Plateau légume 5€<br><br>
+       </div>
 
-        <div class="commande">
-            Commande :
-        </div>
-        <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
-        <select id="quantiteBiere" name="quantiteBiere">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br>
+       <div class="commande">
+           Commande :
+       </div>
+       <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
+       <select id="quantiteBiere" name="Quantité de Bière">
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+       </select><br>
 
-        <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
-        <select id="quantitePlateauCharcuterie" name="quantitePlateauCharcuterie">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br>
+       <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
+       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie">
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+       </select><br>
 
-        <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
-        <select id="quantitePlateauLegumes" name="quantitePlateauLegumes">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select><br><br>
+       <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
+       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes">
+           <option value="0">0</option>
+           <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+           <option value="4">4</option>
+           <option value="5">5</option>
+       </select><br><br>
 
-        <input type="submit" value="Passer la commande">
-    </form>
+       <input type="hidden" name="_to" value="test@test.fr">
+       <input type="hidden" name="_subject" value="Nouvelle commande">
+       <input type="submit" value="Passer la commande">
+   </form>
 
-    <script>
-        document.getElementById("sandwich-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-
-            // Récupérer les valeurs du formulaire
-            var nom = document.getElementById("nom").value;
-            var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value, 10);
-            var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value, 10);
-            var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value, 10);
-
-            // Calculer le prix total
-            var prixBiere = 8.00; // Prix de la bière
-            var prixPlateauCharcuterie = 6.00; // Prix du plateau charcuterie
-            var prixPlateauLegumes = 5.00; // Prix du plateau légumes
-            var total = (prixBiere * quantiteBiere) + (prixPlateauCharcuterie * quantitePlateauCharcuterie) + (prixPlateauLegumes * quantitePlateauLegumes);
-
-            // Afficher les détails de la commande
-            var commandeText = "Commande :";
-            if (quantiteBiere > 0) commandeText += " " + quantiteBiere + " Bière(s),";
-            if (quantitePlateauCharcuterie > 0) commandeText += " " + quantitePlateauCharcuterie + " Plateau Charcuterie(s),";
-            if (quantitePlateauLegumes > 0) commandeText += " " + quantitePlateauLegumes + " Plateau Légumes(s)";
-            var prixText = "Prix total : " + total.toFixed(2);
-
-            alert("Commande de " + nom + "\n" + commandeText + "\n" + prixText);
-        });
-    </script>
 </body>
 </html>
