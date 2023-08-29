@@ -37,29 +37,96 @@
            font-weight: bold;
            color: red;
            text-decoration: underline;
-           font-family: "Times New Roman", serif; /* Exemple de police pour ces classes */
-           font-size: 24px; /* Exemple de taille de police */
+           font-family: "Times New Roman", serif;
+           font-size: 24px;
        }
 
        select {
-           font-family: "Courier New", monospace; /* Exemple de police pour les listbox */
-           font-size: 16px; /* Exemple de taille de police */
+           font-family: "Courier New", monospace;
+           font-size: 16px;
        }
 
        .footer {
-           display: none; /* Pour cacher la bande en bas de page */
+           display: none;
+       }
+
+       /* Modal styles */
+       .modal {
+           display: none;
+           position: fixed;
+           z-index: 1;
+           left: 0;
+           top: 0;
+           width: 100%;
+           height: 100%;
+           background-color: rgba(0,0,0,0.4);
+       }
+
+       .modal-content {
+           background-color: white;
+           margin: 15% auto;
+           padding: 20px;
+           border: 1px solid #888;
+           width: 60%;
+       }
+
+       .close {
+           color: #aaaaaa;
+           float: right;
+           font-size: 28px;
+           font-weight: bold;
+       }
+
+       #confirm-button {
+           background-color: green;
+           color: white;
+           padding: 10px 20px;
+           margin-right: 10px;
+           border: none;
+           cursor: pointer;
        }
    </style>
    <script>
-       function validateForm() {
-           var numeroLoge = document.getElementById("numeroLoge").value;
-           var quantiteBiere = document.getElementById("quantiteBiere").value;
-           var quantitePlateauCharcuterie = document.getElementById("quantitePlateauCharcuterie").value;
-           var quantitePlateauLegumes = document.getElementById("quantitePlateauLegumes").value;
+       function calculateTotal() {
+           var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value);
+           var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
+           var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
 
-           if (numeroLoge === "" || (quantiteBiere === "0" && quantitePlateauCharcuterie === "0" && quantitePlateauLegumes === "0")) {
-               alert("Veuillez sélectionner un numéro de loge et/ou ajouter des quantités de commande.");
-               return false;
+           var prixBiere = 8;
+           var prixCCharcuterie = 6;
+           var prixCLegumes = 5;
+
+           var totalBiere = quantiteBiere * prixBiere;
+           var totalCCharcuterie = quantitePlateauCharcuterie * prixCCharcuterie;
+           var totalCLegumes = quantitePlateauLegumes * prixCLegumes;
+
+           var total = totalBiere + totalCCharcuterie + totalCLegumes;
+
+           var message = "Détails de la commande:\n\n";
+           message += "Quantité de Bière: " + quantiteBiere + " x " + prixBiere + "€ = " + totalBiere + "€\n";
+           message += "Quantité de Plateau Charcuterie: " + quantitePlateauCharcuterie + " x " + prixCCharcuterie + "€ = " + totalCCharcuterie + "€\n";
+           message += "Quantité de Plateau Légumes: " + quantitePlateauLegumes + " x " + prixCLegumes + "€ = " + totalCLegumes + "€\n\n";
+           message += "Total: " + total + "€";
+
+           var confirmButton = document.getElementById("confirm-button");
+           confirmButton.setAttribute("data-message", message);
+           document.getElementById("modal-message").textContent = message;
+       }
+
+       function openModal() {
+           var modal = document.getElementById("modal");
+           modal.style.display = "block";
+       }
+
+       function closeModal() {
+           var modal = document.getElementById("modal");
+           modal.style.display = "none";
+       }
+
+       function confirmOrder() {
+           var message = document.getElementById("confirm-button").getAttribute("data-message");
+           if (confirm("Confirmer la commande avec les détails suivants:\n\n" + message)) {
+               document.getElementById("sandwich-form").submit();
            }
        }
    </script>
@@ -104,7 +171,7 @@
            Commande :
        </div>
        <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
-       <select id="quantiteBiere" name="Quantité de Bière:">
+       <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal()">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -114,7 +181,7 @@
        </select><br>
 
        <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
-       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:">
+       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal()">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -124,7 +191,7 @@
        </select><br>
 
        <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
-       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:">
+       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal()">
            <option value="0">0</option>
            <option value="1">1</option>
            <option value="2">2</option>
@@ -134,7 +201,19 @@
        </select><br><br>
 
        <input type="hidden" name="_subject" value="Nouvelle commande">
-       <input type="submit" value="Passer la commande">
+       <input type="submit" value="Passer la commande" onclick="openModal(); return false;">
    </form>
+
+   <div class="footer"></div>
+
+   <!-- Modal -->
+   <div id="modal" class="modal">
+       <div class="modal-content">
+           <span class="close" onclick="closeModal()">&times;</span>
+           <p id="modal-message"></p>
+           <button id="confirm-button" onclick="confirmOrder()">Confirmer</button>
+           <button onclick="closeModal()">Revenir</button>
+       </div>
+   </div>
 </body>
 </html>
