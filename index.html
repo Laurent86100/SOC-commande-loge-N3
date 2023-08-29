@@ -9,7 +9,7 @@
            font-family: Arial, sans-serif;
        }
 
-       .header, .footer {
+       .header {
            background: linear-gradient(to bottom, rgb(255, 0, 0), white);
            height: 100px;
            display: flex;
@@ -20,7 +20,7 @@
            text-align: center;
        }
 
-       .header:before, .footer:before {
+       .header:before {
            content: "SO Châtellerault - Saison 2023/2024";
            font-family: Arial, sans-serif;
            font-size: 30px;
@@ -43,7 +43,11 @@
 
        select {
            font-family: "Courier New", monospace; /* Exemple de police pour les listbox */
-           font-size: 22px; /* Exemple de taille de police */
+           font-size: 16px; /* Exemple de taille de police */
+       }
+
+       .footer {
+           display: none; /* Pour cacher la bande en bas de page */
        }
    </style>
    <script>
@@ -132,6 +136,5 @@
        <input type="hidden" name="_subject" value="Nouvelle commande">
        <input type="submit" value="Passer la commande">
    </form>
-
 </body>
 </html>
