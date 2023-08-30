@@ -7,8 +7,10 @@
            margin: 0;
            padding: 0;
            font-family: Arial, sans-serif;
+           font-size: 16px; /* Taille de police de base */
        }
 
+       /* Styles de mise en forme pour les écrans plus grands */
        .header {
            background: linear-gradient(to bottom, rgb(255, 0, 0), white);
            height: 100px;
@@ -33,6 +35,23 @@
            padding: 10px;
        }
 
+       /* Utilisation de Media Queries pour les appareils mobiles */
+       @media (max-width: 768px) {
+           /* Réduire la taille de la police pour les écrans plus petits */
+           body {
+               font-size: 14px;
+           }
+
+           /* Ajuster les marges pour les écrans plus petits */
+           .commande-label {
+               margin-top: 10px;
+               font-size: 20px;
+           }
+
+           /* Autres ajustements de mise en forme pour les téléphones portables */
+       }
+
+       /* Styles restants pour les écrans plus grands */
        select {
            font-family: "Courier New", monospace;
            font-size: 16px;
@@ -59,7 +78,7 @@
            font-weight: bold;
        }
 
-      .prochain-match-label {
+       .prochain-match-label {
            font-weight: bold;
            font-size: 24px;
            color: orange;
@@ -68,13 +87,19 @@
        }
 
    </style>
-  <script>
+   <script>
        function generateQuantityOptions() {
            var options = "";
            for (var i = 0; i <= 5; i++) {
                options += `<option value="${i}">${i}</option>`;
            }
            return options;
+       }
+
+       window.onload = function() {
+           document.getElementById("quantiteBiere").innerHTML = generateQuantityOptions();
+           document.getElementById("quantitePlateauCharcuterie").innerHTML = generateQuantityOptions();
+           document.getElementById("quantitePlateauLegumes").innerHTML = generateQuantityOptions();
        }
 
        function calculateTotal() {
@@ -106,7 +131,7 @@
            var numeroLoge = document.getElementById("numeroLoge").value;
            var passerCommandeBtn = document.getElementById("passerCommandeBtn");
 
-           if (nom.trim() !== "" && numeroLoge !== "") {
+           if (nom.trim() !== "" || numeroLoge !== "") {
                passerCommandeBtn.disabled = false;
            } else {
                passerCommandeBtn.disabled = true;
@@ -149,15 +174,15 @@
    <h1>Commande Loge N3</h1>
 
    <div class="prochain-match-label">
-           <hr style="width: 50%; margin: 0 auto;">
-           Prochain match : SO Chatellerault - Vineuil<br>
-           3 Septembre 2023 - 18h00<br>
+       <hr style="width: 50%; margin: 0 auto;">
+       Prochain match : SO Chatellerault - Vineuil<br>
+       3 Septembre 2023 - 18h00<br>
    </div>
 
    <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="validateForm(); createOrderSummary();">
-      <div class="commande-label">
+       <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
-          Informations Commandes:
+           Informations Commandes:
        </div>
        <label for="nom">Nom</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br><br>
@@ -173,7 +198,7 @@
            <option value="7">7</option>
            <option value="8">8</option>
        </select><br><br>
-        <div class="commande-label">
+       <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Tarifs et condition de vente :
        </div>
@@ -183,26 +208,26 @@
            Plateau légume : 5€<br><br>
        </div>
        <div class="commande-label">
-       <hr style="width: 50%; margin: 0 auto;">
-       Ma commande
-   </div>
-   <div>
-       <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
-       <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
-           ${generateQuantityOptions()}
-       </select><br>
-       <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
-       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
-           ${generateQuantityOptions()}
-       </select><br>
-       <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
-       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
-           ${generateQuantityOptions()}
-       </select><br><br>
-   </div>
+           <hr style="width: 50%; margin: 0 auto;">
+           Ma commande
+       </div>
+       <div>
+           <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
+           <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br>
+           <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
+           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br>
+           <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
+           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br><br>
+       </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
-           Synthèse du panier 
+           Synthèse du panier
        </div>
        <div>
            <label for="nombreProduits">Nombre de produits commandés:</label>
@@ -217,10 +242,6 @@
        <input type="hidden" name="_subject" value="Nouvelle commande">
        <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled>
    </form>
-   <div class="footer"></div>
-</body>
-</html>
-
    <div class="footer"></div>
 </body>
 </html>
