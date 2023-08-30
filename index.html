@@ -50,6 +50,27 @@
            display: none;
        }
 
+       /* Styles ajoutés */
+       .commande-label {
+           font-weight: bold;
+           font-size: 24px;
+           color: red;
+           margin-top: 20px;
+           text-decoration: underline;
+           text-align: center;
+       }
+
+       .commande-field {
+           border: none;
+           outline: none;
+           background-color: transparent;
+           font-size: 16px;
+           font-weight: bold;
+       }
+
+   </style>
+   <script>
+
    </style>
    <script>
        function calculateTotal() {
@@ -155,47 +176,50 @@
            Plateau légume : 5€<br><br>
        </div>
 
-       <div class="commande">
-           Commande :
+       <div class="commande-label">
+           <hr style="width: 50%; margin: 0 auto;">
+           Ma commande
        </div>
-       <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
-       <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
-           <option value="0">0</option>
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5">5</option>
-       </select><br>
-
-       <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
-       <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
-           <option value="0">0</option>
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5">5</option>
-       </select><br>
-
-       <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
-       <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
-           <option value="0">0</option>
-           <option value="1">1</option>
-           <option value="2">2</option>
-           <option value="3">3</option>
-           <option value="4">4</option>
-           <option value="5">5</option>
-       </select><br><br>
-
        <div>
-           <label for="nombreProduits">Nombre de produits commandés:</label>
-           <input type="text" id="nombreProduits" readonly>
-       </div>
+           <label for="quantiteBiere">Quantité de Bière (0-5) :</label>
+           <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+           </select><br>
 
-       <div>
-           <label for="totalCommande">Total:</label>
-           <input type="text" id="totalCommande" readonly>
+           <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-5) :</label>
+           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+           </select><br>
+
+           <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-5) :</label>
+           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
+               <option value="0">0</option>
+               <option value="1">1</option>
+               <option value="2">2</option>
+               <option value="3">3</option>
+               <option value="4">4</option>
+               <option value="5">5</option>
+           </select><br><br>
+           
+           <div>
+               <label for="nombreProduits">Nombre de produits commandés:</label>
+               <input type="text" id="nombreProduits" class="commande-field" readonly>
+           </div>
+
+           <div>
+               <label for="totalCommande">Total:</label>
+               <input type="text" id="totalCommande" class="commande-field" readonly>
+           </div>
        </div>
 
        <input type="hidden" id="orderSummary" name="Order Summary">
