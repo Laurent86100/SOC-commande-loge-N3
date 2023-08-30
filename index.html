@@ -33,14 +33,6 @@
            padding: 10px;
        }
 
-       .informations-commandes, .information, .commande {
-           font-weight: bold;
-           color: red;
-           text-decoration: underline;
-           font-family: "Times New Roman", serif;
-           font-size: 24px;
-       }
-
        select {
            font-family: "Courier New", monospace;
            font-size: 16px;
@@ -143,7 +135,8 @@
 
    <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="validateForm(); createOrderSummary();">
       
-       <div class="informations-commandes">
+      <div class="commande-label">
+           <hr style="width: 50%; margin: 0 auto;">
           Informations Commandes:
        </div>
       
@@ -207,7 +200,12 @@
                <option value="4">4</option>
                <option value="5">5</option>
            </select><br><br>
-           
+          
+       <div class="commande-label">
+           <hr style="width: 50%; margin: 0 auto;">
+           Synthèse du panier 
+       </div>
+          
            <div>
                <label for="nombreProduits">Nombre de produits commandés:</label>
                <input type="text" id="nombreProduits" class="commande-field" readonly>
