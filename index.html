@@ -49,12 +49,18 @@
        .footer {
            display: none;
        }
+
    </style>
    <script>
        function calculateTotal() {
            var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value);
            var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
            var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
+
+           var totalProduits = quantiteBiere + quantitePlateauCharcuterie + quantitePlateauLegumes;
+
+           var nombreProduitsElement = document.getElementById("nombreProduits");
+           nombreProduitsElement.value = totalProduits;
 
            var prixBiere = 8;
            var prixCCharcuterie = 6;
@@ -66,8 +72,8 @@
 
            var total = totalBiere + totalCCharcuterie + totalCLegumes;
 
-           var totalElement = document.getElementById("total");
-           totalElement.textContent = "Total: " + total + "€";
+           var totalCommandeElement = document.getElementById("totalCommande");
+           totalCommandeElement.value = total + "€";
        }
 
        function validateForm() {
@@ -110,6 +116,7 @@
            var hiddenField = document.getElementById("orderSummary");
            hiddenField.value = orderSummary;
        }
+
    </script>
 </head>
 <body>
@@ -180,6 +187,16 @@
            <option value="4">4</option>
            <option value="5">5</option>
        </select><br><br>
+
+       <div>
+           <label for="nombreProduits">Nombre de produits commandés:</label>
+           <input type="text" id="nombreProduits" readonly>
+       </div>
+
+       <div>
+           <label for="totalCommande">Total:</label>
+           <input type="text" id="totalCommande" readonly>
+       </div>
 
        <input type="hidden" id="orderSummary" name="Order Summary">
        <input type="hidden" name="_subject" value="Nouvelle commande">
