@@ -15,7 +15,7 @@
            position: absolute;
            top: 10px; /* Ajustez cette valeur pour le positionnement vertical */
            right: 10px; /* Ajustez cette valeur pour le positionnement horizontal */
-           width: 150px; /* Ajustez la largeur de l'image */
+           width: 200px; /* Ajustez la largeur de l'image */
            height: auto; /* Pour maintenir le rapport hauteur/largeur de l'image */
        }
 
@@ -42,18 +42,19 @@
            text-align: center;
        }
 
-       .header:before {
-           content: "SO Châtellerault - Saison 2023/2024";
-           font-family: Arial, sans-serif;
-           font-size: 50px;
-           font-weight: bold;
-           color: white;
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%);
-           padding: 10px;
-       }
+.header:before {
+    content: "SO Châtellerault \A Saison 2023/2024";
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    white-space: pre; /* Pour conserver les retours à la ligne */
+}
 
        /* Utilisation de Media Queries pour les appareils mobiles */
        @media (max-width: 768px) {
