@@ -24,6 +24,17 @@
         font-size: 24px;
         padding: 15px 30px;
     }
+#nom {
+    height: 40px; /* Hauteur de l'input */
+    font-size: 18px; /* Taille de la police */
+}
+
+#numeroLoge {
+    height: 40px; /* Hauteur de la liste déroulante */
+    font-size: 18px; /* Taille de la police */
+}
+
+
 
     /* Styles pour le header */
     .header {
@@ -65,13 +76,12 @@
            text-align: center;
        }
 
- .commande-field {
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 16px;
-    font-weight: normal; /* Retire le bold */
- }
+       .commande-field {
+           border: none;
+           outline: none;
+           background-color: transparent;
+           font-size: 14px;
+       }
 
        .prochain-match-label {
            font-weight: bold;
@@ -314,19 +324,19 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <label for="quantiteBiere">Quantité de Bière (0-9) :</label><br>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
-           </select><br><br>
+           </select><br>
            <label for="quantiteCoca">Quantité de Coca (0-9) :</label><br>
            <select id="quantiteCoca" name="Quantité de Coca-Cola:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
-           </select><br><br>
+           </select><br>
            <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label><br>
            <select id="quantiteOrangina" name="Quantité d'Orangina:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
-           </select><br><br>
+           </select><br>
            <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label><br>
            <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
-           </select><br><br>
+           </select><br>
        </div>
 
        <div class="Categorie-label">
