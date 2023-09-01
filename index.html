@@ -311,19 +311,19 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        </div>
 
        <div class="commande-field">
-           <label for="quantiteBiere">Quantité de Bière (0-9) :</label><br><br>
+           <label for="quantiteBiere">Quantité de Bière (0-9) :</label><br>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br><br>
-           <label for="quantiteCoca">Quantité de Coca (0-9) :</label><br><br>
+           <label for="quantiteCoca">Quantité de Coca (0-9) :</label><br>
            <select id="quantiteCoca" name="Quantité de Coca-Cola:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br><br>
-           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label><br><br>
+           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label><br>
            <select id="quantiteOrangina" name="Quantité d'Orangina:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br><br>
-           <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label><br><br>
+           <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label><br>
            <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br><br>
