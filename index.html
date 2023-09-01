@@ -25,10 +25,18 @@
            padding: 10px 20px; /* Ajuster les marges intérieures pour augmenter la taille du bouton */
        }
 
-	/* Ajoutez cette règle CSS pour le label "Nom du sponsor" */
-	label[for="nom"] {
-    	font-size: 10vw; /* 30% de la largeur de la vue */
-	}
+/* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
+label[for="nom"] {
+    /* Vos styles par défaut ici */
+    font-size: 16px; /* Taille par défaut pour les écrans plus grands */
+}
+
+/* Média query pour les smartphones et tablettes */
+@media (max-width: 768px) {
+    label[for="nom"] {
+        font-size: 5vw; /* Taille pour les smartphones et tablettes */
+    }
+}
       
        /* Styles de mise en forme pour les écrans plus grands */
        .header {
