@@ -7,7 +7,7 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        font-size: 16px; /* Taille de police par défaut pour les écrans plus grands */
+        font-size: 20px; /* Taille de police par défaut pour les écrans plus grands */
     }
 
     /* Positionnement de l'image en haut à droite */
@@ -19,54 +19,20 @@
         height: auto;
     }
       
-/* Augmenter la taille du label pour "quantiteBiere" avec le préfixe -webkit- */
-label[for="quantiteBiere"] {
-    font-size: 20px; /* Ajustez la taille de police selon vos besoins */
-    -webkit-font-size: 40px; /* Préfixe -webkit- pour une meilleure compatibilité avec certains navigateurs Android */
-}
     /* Augmenter la taille du bouton "Passer la commande" */
     #passerCommandeBtn {
-        font-size: 16px;
-        padding: 10px 20px;
+        font-size: 24px;
+        padding: 15px 30px;
     }
 
-    /* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
-    .commande-label,
-    .commande-field,
-    .Categorie-label {
-        font-size: 16px; /* Taille de police par défaut pour les écrans plus grands */
-        color: #333; /* Couleur de texte par défaut */
-        margin: 10px 0; /* Marge supérieure et inférieure par défaut */
-    }
-
-    /* Préfixes WebKit pour Android */
+       /* Préfixes WebKit pour Android */
     @media screen and (-webkit-min-device-pixel-ratio: 0) {
         /* Exemple de préfixe WebKit pour la taille de police */
         .commande-label,
         .commande-field,
         .Categorie-label {
-            -webkit-font-size: 16px;
+            -webkit-font-size: 30px;
         }
-    }
-
-    /* Média query pour les smartphones et tablettes */
-    @media (max-width: 768px) {
-        /* Utilisation d'unités flexibles pour la taille de police */
-        .commande-label,
-        .commande-field,
-        .Categorie-label {
-            font-size: 15vw; /* Taille pour les smartphones et tablettes */
-            text-align: center; /* Centrer le texte sur les petits écrans */
-        }
-
-        /* Réduire la marge sur les petits écrans */
-        .commande-label,
-        .commande-field,
-        .Categorie-label {
-            margin: 5px 0;
-        }
-
-        /* Autres styles spécifiques aux petits écrans */
     }
 
     /* Styles pour le header */
