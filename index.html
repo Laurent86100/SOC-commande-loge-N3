@@ -236,12 +236,13 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        Prochain match : SO Chatellerault - Vineuil<br>
        3 Septembre 2023 - 18h00<br><br>
    </div>
-
+   
     <form id="sandwich-form" action="https://formspree.io/f/xgejkjly" method="POST" onsubmit="validateForm(); createOrderSummary();">
    <div class="commande-label">
        <hr style="width: 50%; margin: 0 auto;">
        Informations Commandes:
    </div><br>
+   <div class="commande-field">
        <label for="nom">Nom du sponsor</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br>
        <label for="numeroLoge">Numéro de loge :</label>
@@ -256,6 +257,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <option value="7">7</option>
            <option value="8">8</option>
        </select><br>
+    </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Tarifs et conditions de vente :
@@ -283,6 +285,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        <div class="Categorie-label">
            Boissons :
        </div>
+       <div class="commande-field">
            <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
@@ -302,7 +305,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        <div class="Categorie-label">
            Plateaux :
        </div>
-       <div>
+       <div class="commande-field">
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
            <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
@@ -310,8 +313,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label>
            <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
-           </select><br>
-           
+           </select><br>     
        </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
