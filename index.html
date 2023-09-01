@@ -25,24 +25,41 @@
            padding: 10px 20px; /* Ajuster les marges intérieures pour augmenter la taille du bouton */
        }
 
-      /* Augmenter la police de la zone de texte pour le nom */
-       #nom {
-           font-size: 22px;
+       /* Augmenter la police de la zone de texte pour le nom */
+           #nom {
+               font-size: 22px;
+      }
+      
+       /* Styles de mise en forme pour les écrans plus grands */
+       .header {
+           background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
+           height: 170px;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           color: white;
+           position: relative;
+           text-align: center;
        }
 
-      /* En-tête de la page
-       .header:before {
-           content: "SO Châtellerault \A Saison 2023/2024";
-           font-family: Arial, sans-serif;
-           font-size: 55px;
-           color: white;
-           text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%);
-           padding: 10px;
-           white-space: pre; /* Pour conserver les retours à la ligne */
+.header:before {
+    content: "SO Châtellerault \A Saison 2023/2024";
+    font-family: Arial, sans-serif;
+    font-size: 55px;
+    color: white;
+    text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    white-space: pre; /* Pour conserver les retours à la ligne */
+}
+
+      /* Augmenter la hauteur des listes déroulantes */
+       select {
+        font-size: 22px; /* Augmenter la taille de la police */
+        padding: 10px; /* Ajuster la hauteur de la liste déroulante */
        }
 
        .footer {
@@ -238,7 +255,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <option value="6">6</option>
            <option value="7">7</option>
            <option value="8">8</option>
-       </select><br><br>
+       </select><br>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Tarifs et conditions de vente :
@@ -257,12 +274,12 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            Plateaux :
        </div>
            Assortiement de charcuteries (6 personnes): <span id="prixCCharcuterieLabel"></span>€<br>
-           Assortiment de légumes (6 personnes) : <span id="prixCLegumesLabel"></span>€<br><br>
+           Assortiment de légumes (6 personnes) : <span id="prixCLegumesLabel"></span>€<br>
        </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Ma commande
-       </div><br>
+       </div>
        <div class="Categorie-label">
            Boissons :
        </div>
@@ -281,12 +298,11 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label>
            <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
-           </select><br><br>
+           </select><br>
        <div class="Categorie-label">
            Plateaux :
        </div>
        <div>
-           
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
            <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
