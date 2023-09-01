@@ -19,25 +19,29 @@
            height: auto; /* Pour maintenir le rapport hauteur/largeur de l'image */
        }
 
-      /* Augmenter la taille du bouton "Passer la commande" */
+       /* Augmenter la taille du bouton "Passer la commande" */
        #passerCommandeBtn {
            font-size: 22px;
            padding: 10px 20px; /* Ajuster les marges intérieures pour augmenter la taille du bouton */
        }
 
-/* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
-label[for="nom"] {
-    /* Vos styles par défaut ici */
-    font-size: 16px; /* Taille par défaut pour les écrans plus grands */
-}
+       /* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
+       .commande-label,
+       .commande-field,
+       .Categorie-label {
+           /* Vos styles par défaut ici */
+           font-size: 16px; /* Taille par défaut pour les écrans plus grands */
+       }
 
-/* Média query pour les smartphones et tablettes */
-@media (max-width: 768px) {
-    label[for="nom"] {
-        font-size: 5vw; /* Taille pour les smartphones et tablettes */
-    }
-}
-      
+       /* Média query pour les smartphones et tablettes */
+       @media (max-width: 768px) {
+           .commande-label,
+           .commande-field,
+           .Categorie-label {
+               font-size: 5vw; /* Taille pour les smartphones et tablettes */
+           }
+       }
+
        /* Styles de mise en forme pour les écrans plus grands */
        .header {
            background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
@@ -50,24 +54,24 @@ label[for="nom"] {
            text-align: center;
        }
 
-.header:before {
-    content: "SO Châtellerault \A Saison 2023/2024";
-    font-family: Arial, sans-serif;
-    font-size: 55px;
-    color: white;
-    text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 10px;
-    white-space: pre; /* Pour conserver les retours à la ligne */
-}
+       .header:before {
+           content: "SO Châtellerault \A Saison 2023/2024";
+           font-family: Arial, sans-serif;
+           font-size: 55px;
+           color: white;
+           text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           padding: 10px;
+           white-space: pre; /* Pour conserver les retours à la ligne */
+       }
 
-      /* Augmenter la hauteur des listes déroulantes */
+       /* Augmenter la hauteur des listes déroulantes */
        select {
-        font-size: 22px; /* Augmenter la taille de la police */
-        padding: 10px; /* Ajuster la hauteur de la liste déroulante */
+           font-size: 22px; /* Augmenter la taille de la police */
+           padding: 10px; /* Ajuster la hauteur de la liste déroulante */
        }
 
        .footer {
@@ -101,11 +105,10 @@ label[for="nom"] {
            font-weight: bold;
            text-decoration: underline;
            font-size: 20px;
-           color: blakc;
+           color: black;
            margin-top: 15px;
            text-align: left;
        }
-
    </style>
    <script>
 
@@ -351,7 +354,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        </div><br><br>
        <input type="hidden" id="orderSummary" name="Order Summary">
        <input type="hidden" name="_subject" value="Nouvelle commande">
-       <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled>
+       <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled><br><br>
    </form>
    <div class="footer"></div>
    <img class="logo" src="https://seeklogo.com/images/S/so-chatellerault-logo-6DB6DD8476-seeklogo.com.png" alt="Logo">
