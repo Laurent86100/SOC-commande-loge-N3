@@ -319,11 +319,11 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
 
        <div class="commande-field">
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
-           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
+           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();"class="commande-field">
                ${generateQuantityOptions()}
            </select><br>
            <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label>
-           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
+           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();"class="commande-field">
                ${generateQuantityOptions()}
            </select><br>     
        </div>
