@@ -7,7 +7,7 @@
         margin: 0;
         padding: 0;
         font-family: Arial, sans-serif;
-        font-size: 20px; /* Taille de police par défaut pour les écrans plus grands */
+        font-size: 16px; /* Taille de police par défaut pour les écrans plus grands */
     }
 
     /* Positionnement de l'image en haut à droite */
@@ -59,7 +59,7 @@
     /* Autres styles pour les différents éléments de votre page */
       .commande-label {
            font-weight: bold;
-           font-size: 22px;
+           font-size: 16px;
            color: red;
            margin-top: 20px;
            text-align: center;
@@ -69,12 +69,12 @@
            border: none;
            outline: none;
            background-color: transparent;
-           font-size: 20px;
+           font-size: 16px;
        }
 
        .prochain-match-label {
            font-weight: bold;
-           font-size: 26px;
+           font-size: 20px;
            color: orange;
            margin-top: 20px;
            text-align: left;
@@ -83,7 +83,7 @@
        .Categorie-label {
            font-weight: bold;
            text-decoration: underline;
-           font-size: 20px;
+           font-size: 16px;
            color: black;
            margin-top: 15px;
            text-align: left;
@@ -94,6 +94,22 @@
     padding: 20px; /* Ajustez la hauteur de la liste déroulante au besoin */
     /* Autres styles spécifiques aux listes déroulantes */
 }
+/* Style pour chaque paire label-input */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        font-size: inherit;
+    }
 </style>
    <script>
 
@@ -239,9 +255,12 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        Informations Commandes:
    </div><br>
 
-   <div class="commande-field">
+   <div class="form-group">
        <label for="nom">Nom du sponsor</label>
-       <input type="text" id="nom" name="Nom de la commande:" required><br>
+       <input type="text" id="nom" name="Nom de la commande:" required>
+   </div>
+
+   <div class="form-group">
        <label for="numeroLoge">Numéro de loge :</label>
        <select id="numeroLoge" name="Numéro de loge:" onchange="validateForm();">
            <option value="" selected disabled>Choisir...</option>
@@ -253,8 +272,8 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <option value="6">6</option>
            <option value="7">7</option>
            <option value="8">8</option>
-       </select><br>
-    </div>
+       </select>
+   </div>
 
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
@@ -291,19 +310,19 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        </div>
 
        <div class="commande-field">
-           <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
+           <label for="quantiteBiere">Quantité de Bière (0-9) :</label><br>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
-           <label for="quantiteCoca">Quantité de Coca (0-9) :</label>
+           <label for="quantiteCoca">Quantité de Coca (0-9) :</label><br>
            <select id="quantiteCoca" name="Quantité de Coca-Cola:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
-           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label>
+           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label><br>
            <select id="quantiteOrangina" name="Quantité d'Orangina:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
-           <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label>
+           <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label><br>
            <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
@@ -314,11 +333,11 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        </div>
 
        <div class="commande-field">
-           <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
+           <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label><br>
            <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
-           <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label>
+           <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label><br>
            <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>     
