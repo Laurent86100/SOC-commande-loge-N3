@@ -25,10 +25,10 @@
            padding: 10px 20px; /* Ajuster les marges intérieures pour augmenter la taille du bouton */
        }
 
-       /* Augmenter la police de la zone de texte pour le nom */
-           #nom {
-               font-size: 22px;
-      }
+	/* Ajoutez cette règle CSS pour le label "Nom du sponsor" */
+	label[for="nom"] {
+    	font-size: 30vw; /* 30% de la largeur de la vue */
+	}
       
        /* Styles de mise en forme pour les écrans plus grands */
        .header {
@@ -319,11 +319,11 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
 
        <div class="commande-field">
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
-           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();"class="commande-field">
+           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
            </select><br>
            <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label>
-           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();"class="commande-field">
+           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
            </select><br>     
        </div>
