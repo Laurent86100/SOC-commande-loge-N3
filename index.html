@@ -127,6 +127,12 @@
            margin-top: 15px;
            text-align: left;
        }
+      /* Styles pour les listes déroulantes */
+.select-field {
+    font-size: 16px; /* Ajustez la taille de police selon vos besoins */
+    padding: 10px; /* Ajustez la hauteur de la liste déroulante au besoin */
+    /* Autres styles spécifiques aux listes déroulantes */
+}
 </style>
    <script>
 
@@ -337,7 +343,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
                ${generateQuantityOptions()}
            </select><br>
            <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label>
-           <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();">
+           <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br>
        </div>
