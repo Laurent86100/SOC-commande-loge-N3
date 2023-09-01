@@ -242,6 +242,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        <hr style="width: 50%; margin: 0 auto;">
        Informations Commandes:
    </div><br>
+
    <div class="commande-field">
        <label for="nom">Nom du sponsor</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br>
@@ -258,33 +259,41 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <option value="8">8</option>
        </select><br>
     </div>
+
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Tarifs et conditions de vente :
        </div>
+
        <div class="Categorie-label">
            Boissons :
        </div>
+
        <div class="commande-field">
            Bière (Pichet 1L) : <span id="prixBiereLabel"></span>€<br>
            Coca-Cola (Canette 33cl) : <span id="prixCCocaLabel"></span>€<br>
            Orangina (Canette 33cl) : <span id="prixCOranginaLabel"></span>€<br>
            Iced tea (Canette 33cl) : <span id="prixCIcedteaLabel"></span>€<br>
-       </div>       
-       <div class="commande-field">
+       </div>    
+   
        <div class="Categorie-label">
            Plateaux :
        </div>
+
+      <div class="commande-field">
            Assortiement de charcuteries (6 personnes): <span id="prixCCharcuterieLabel"></span>€<br>
            Assortiment de légumes (6 personnes) : <span id="prixCLegumesLabel"></span>€<br>
-       </div>
+      </div>
+
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Ma commande
        </div>
+
        <div class="Categorie-label">
            Boissons :
        </div>
+
        <div class="commande-field">
            <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
@@ -302,9 +311,12 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
            </select><br>
+       </div>
+
        <div class="Categorie-label">
            Plateaux :
        </div>
+
        <div class="commande-field">
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
            <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
@@ -315,10 +327,12 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
                ${generateQuantityOptions()}
            </select><br>     
        </div>
+
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Synthèse du panier
        </div><br>
+
        <div>
            <label for="nombreProduits">Nombre de produits commandés:</label>
            <input type="text" id="nombreProduits" class="commande-field" readonly>
