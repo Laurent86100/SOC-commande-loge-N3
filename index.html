@@ -30,18 +30,7 @@
            font-size: 22px;
        }
 
-       /* Styles de mise en forme pour les écrans plus grands */
-       .header {
-           background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
-           height: 170px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           color: white;
-           position: relative;
-           text-align: center;
-       }
-
+      /* En-tête de la page
        .header:before {
            content: "SO Châtellerault \A Saison 2023/2024";
            font-family: Arial, sans-serif;
@@ -56,49 +45,10 @@
            white-space: pre; /* Pour conserver les retours à la ligne */
        }
 
-       /* Utilisation de Media Queries pour les appareils mobiles */
-       @media (max-width: 768px) {
-           /* Réduire la taille de la police pour les écrans plus petits */
-           body {
-               font-size: 22px;
-           }
-
-           /* Ajuster les marges pour les écrans plus petits */
-           .commande-label {
-               margin-top: 10px;
-               font-size: 22px;
-           }
-
-           .commande-field {
-               margin-top: 10px;
-               font-size: 22px;
-           }
-
-           /* Augmenter la taille du bouton et la taille de police du texte */
-           #passerCommandeBtn {
-               font-size: 24px;
-               padding: 10px 20px;
-           }
-
-           /* Augmenter la police de la zone de texte pour le nom */
-           #nom {
-               font-size: 22px;
-           }
-
-           /* Autres ajustements de mise en forme pour les téléphones portables */
-       }
-
-       /* Styles restants pour les écrans plus grands */
-       select {
-           font-family: "Courier New", monospace;
-           font-size: 22px;
-       }
-
        .footer {
            display: none;
        }
 
-       /* Styles ajoutés */
        .commande-label {
            font-weight: bold;
            font-size: 22px;
@@ -122,6 +72,15 @@
            text-align: left;
        }
 
+       .Categorie-label {
+           font-weight: bold;
+           text-decoration: underline;
+           font-size: 20px;
+           color: blakc;
+           margin-top: 15px;
+           text-align: left;
+       }
+
    </style>
    <script>
 
@@ -129,7 +88,7 @@
        const prixBiere = 8;
        const prixCCharcuterie = 12;
        const prixCLegumes = 8;
-       const prixCSoda = 2.5;
+       const prixCSoda = 1.5;
 
        function generateQuantityOptions() {
            var options = "";
@@ -148,12 +107,16 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            document.getElementById("quantitePlateauCharcuterie").innerHTML = generateQuantityOptions();
            document.getElementById("quantitePlateauLegumes").innerHTML = generateQuantityOptions();
            document.getElementById("quantiteCoca").innerHTML = generateQuantityOptions();
+           document.getElementById("quantiteOrangina").innerHTML = generateQuantityOptions();
+           document.getElementById("quantiteIcedtea").innerHTML = generateQuantityOptions();
 
            // Mettre à jour les labels de prix
            document.querySelector("#prixBiereLabel").textContent = prixBiere;
            document.querySelector("#prixCCharcuterieLabel").textContent = prixCCharcuterie;
            document.querySelector("#prixCLegumesLabel").textContent = prixCLegumes;
-           document.querySelector("#prixCSodaLabel").textContent = prixCSoda;
+           document.querySelector("#prixCCocaLabel").textContent = prixCSoda;
+           document.querySelector("#prixCOranginaLabel").textContent = prixCSoda;
+           document.querySelector("#prixCIcedteaLabel").textContent = prixCSoda;
        }
    } else {
        // Une ou plusieurs constantes ne sont pas correctement définies
@@ -166,8 +129,10 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
            var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
            var quantiteCoca = parseInt(document.getElementById("quantiteCoca").value);
+           var quantiteOrangina = parseInt(document.getElementById("quantiteOrangina").value);
+           var quantiteIcedtea = parseInt(document.getElementById("quantiteIcedtea").value);
 
-           var totalProduits = quantiteBiere + quantitePlateauCharcuterie + quantitePlateauLegumes + quantiteCoca;
+           var totalProduits = quantiteBiere + quantitePlateauCharcuterie + quantitePlateauLegumes + quantiteCoca + quantiteOrangina + quantiteIcedtea;
 
            var nombreProduitsElement = document.getElementById("nombreProduits");
            nombreProduitsElement.value = totalProduits;
@@ -176,8 +141,10 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            var totalCCharcuterie = quantitePlateauCharcuterie * prixCCharcuterie;
            var totalCLegumes = quantitePlateauLegumes * prixCLegumes;
            var totalCoca = quantiteCoca * prixCSoda;
+           var totalOrangina = quantiteOrangina * prixCSoda;
+           var totalIcedtea = quantiteIcedtea * prixCSoda;
 
-           var total = totalBiere + totalCCharcuterie + totalCLegumes + totalCoca;
+           var total = totalBiere + totalCCharcuterie + totalCLegumes + totalCoca + totalOrangina + totalIcedtea;
 
            var totalCommandeElement = document.getElementById("totalCommande");
            totalCommandeElement.value = total + "€";
@@ -203,6 +170,8 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
            var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
            var quantiteCoca = parseInt(document.getElementById("quantiteCoca").value);
+           var quantiteOrangina = parseInt(document.getElementById("quantiteOrangina").value);
+           var quantiteIcedtea = parseInt(document.getElementById("quantiteIcedtea").value);
 
            if (quantiteBiere > 0) {
                orderSummary += "Quantité de Bière: " + quantiteBiere + "\n";
@@ -224,6 +193,16 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
                total += quantiteCoca * prixCSoda;
            }
 
+           if (quantiteOrangina > 0) {
+               orderSummary += "Quantité d'Orangina: " + quantiteOrangina + "\n";
+               total += quantiteOrangina * prixCSoda;
+           }
+
+           if (quantiteIcedtea > 0) {
+               orderSummary += "Quantité d'Iced tea: " + quantiteIcedtea + "\n";
+               total += quantiteIcedtea * prixCSoda;
+           }
+
            orderSummary += "Total: " + total + "€\n";
 
            var hiddenField = document.getElementById("orderSummary");
@@ -234,7 +213,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
 <body>
    <div class="header"></div>
 
-   <h1>Commande Loge N3</h1>
+   <h1>Loge N3 - Commandes en ligne</h1>
 
    <div class="prochain-match-label">
        Prochain match : SO Chatellerault - Vineuil<br>
@@ -245,7 +224,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
    <div class="commande-label">
        <hr style="width: 50%; margin: 0 auto;">
        Informations Commandes:
-   </div>
+   </div><br>
        <label for="nom">Nom du sponsor</label>
        <input type="text" id="nom" name="Nom de la commande:" required><br>
        <label for="numeroLoge">Numéro de loge :</label>
@@ -264,21 +243,50 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <hr style="width: 50%; margin: 0 auto;">
            Tarifs et conditions de vente :
        </div>
+       <div class="Categorie-label">
+           Boissons :
+       </div>
        <div class="commande-field">
-           Pichet de bière - 1 litre : <span id="prixBiereLabel"></span>€<br>
-           Plateau de charcuteries : <span id="prixCCharcuterieLabel"></span>€<br>
-           Plateau de légumes : <span id="prixCLegumesLabel"></span>€<br>
-           Coca : <span id="prixCSodaLabel"></span>€<br><br>
+           Bière (Pichet 1L) : <span id="prixBiereLabel"></span>€<br>
+           Coca-Cola (Canette 33cl) : <span id="prixCCocaLabel"></span>€<br>
+           Orangina (Canette 33cl) : <span id="prixCOranginaLabel"></span>€<br>
+           Iced tea (Canette 33cl) : <span id="prixCIcedteaLabel"></span>€<br>
+       </div>       
+       <div class="commande-field">
+       <div class="Categorie-label">
+           Plateaux :
+       </div>
+           Assortiement de charcuteries (6 personnes): <span id="prixCCharcuterieLabel"></span>€<br>
+           Assortiment de légumes (6 personnes) : <span id="prixCLegumesLabel"></span>€<br><br>
        </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Ma commande
+       </div><br>
+       <div class="Categorie-label">
+           Boissons :
        </div>
-       <div>
            <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
            </select><br>
+           <label for="quantiteCoca">Quantité de Coca (0-9) :</label>
+           <select id="quantiteCoca" name="Quantité de Coca-Cola:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br>
+           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label>
+           <select id="quantiteOrangina" name="Quantité d'Orangina:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br>
+           <label for="quantiteIcedtea">Quantité d'Iced tea (0-9) :</label>
+           <select id="quantiteIcedtea" name="Quantité d'Iced tea:" onchange="calculateTotal(); validateForm();">
+               ${generateQuantityOptions()}
+           </select><br><br>
+       <div class="Categorie-label">
+           Plateaux :
+       </div>
+       <div>
+           
            <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label>
            <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
@@ -287,15 +295,12 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
            <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();">
                ${generateQuantityOptions()}
            </select><br>
-           <label for="quantiteCoca">Quantité de Coca (0-9) :</label>
-           <select id="quantiteCoca" name="Quantité de Coca:" onchange="calculateTotal(); validateForm();">
-               ${generateQuantityOptions()}
-           </select><br><br>
+           
        </div>
        <div class="commande-label">
            <hr style="width: 50%; margin: 0 auto;">
            Synthèse du panier
-       </div>
+       </div><br>
        <div>
            <label for="nombreProduits">Nombre de produits commandés:</label>
            <input type="text" id="nombreProduits" class="commande-field" readonly>
@@ -303,7 +308,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        <div>
            <label for="totalCommande">Total:</label>
            <input type="text" id="totalCommande" class="commande-field" readonly>
-       </div>
+       </div><br><br>
        <input type="hidden" id="orderSummary" name="Order Summary">
        <input type="hidden" name="_subject" value="Nouvelle commande">
        <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled>
