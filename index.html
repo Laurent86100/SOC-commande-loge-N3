@@ -3,113 +3,100 @@
 <head>
    <title>Commande Loge N3</title>
    <style>
-       body {
-           margin: 0;
-           padding: 0;
-           font-family: Arial, sans-serif;
-           font-size: 22px;
-       }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        font-size: 16px; /* Taille de police par défaut pour les écrans plus grands */
+    }
 
-       /* Positionnement de l'image en haut à droite */
-       .logo {
-           position: absolute;
-           top: 15px; /* Ajustez cette valeur pour le positionnement vertical */
-           right: 10px; /* Ajustez cette valeur pour le positionnement horizontal */
-           width: 150px; /* Ajustez la largeur de l'image */
-           height: auto; /* Pour maintenir le rapport hauteur/largeur de l'image */
-       }
+    /* Positionnement de l'image en haut à droite */
+    .logo {
+        position: absolute;
+        top: 15px;
+        right: 10px;
+        width: 150px;
+        height: auto;
+    }
 
-       /* Augmenter la taille du bouton "Passer la commande" */
-       #passerCommandeBtn {
-           font-size: 22px;
-           padding: 10px 20px; /* Ajuster les marges intérieures pour augmenter la taille du bouton */
-       }
+    /* Augmenter la taille du bouton "Passer la commande" */
+    #passerCommandeBtn {
+        font-size: 16px;
+        padding: 10px 20px;
+    }
 
-       /* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
-       .commande-label,
-       .commande-field,
-       .Categorie-label {
-           /* Vos styles par défaut ici */
-           font-size: 16px; /* Taille par défaut pour les écrans plus grands */
-       }
+    /* Styles par défaut pour les écrans plus grands (par exemple, ordinateurs de bureau) */
+    .commande-label,
+    .commande-field,
+    .Categorie-label {
+        font-size: 16px; /* Taille de police par défaut pour les écrans plus grands */
+        color: #333; /* Couleur de texte par défaut */
+        margin: 10px 0; /* Marge supérieure et inférieure par défaut */
+    }
 
-       /* Média query pour les smartphones et tablettes */
-       @media (max-width: 968px) {
-           .commande-label,
-           .commande-field,
-           .Categorie-label {
-               font-size: 5vw; /* Taille pour les smartphones et tablettes */
-           }
-       }
+    /* Préfixes WebKit pour Android */
+    @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        /* Exemple de préfixe WebKit pour la taille de police */
+        .commande-label,
+        .commande-field,
+        .Categorie-label {
+            -webkit-font-size: 16px;
+        }
+    }
 
-       /* Styles de mise en forme pour les écrans plus grands */
-       .header {
-           background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
-           height: 170px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           color: white;
-           position: relative;
-           text-align: center;
-       }
+    /* Média query pour les smartphones et tablettes */
+    @media (max-width: 768px) {
+        /* Utilisation d'unités flexibles pour la taille de police */
+        .commande-label,
+        .commande-field,
+        .Categorie-label {
+            font-size: 5vw; /* Taille pour les smartphones et tablettes */
+            text-align: center; /* Centrer le texte sur les petits écrans */
+        }
 
-       .header:before {
-           content: "SO Châtellerault \A Saison 2023/2024";
-           font-family: Arial, sans-serif;
-           font-size: 55px;
-           color: white;
-           text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
-           position: absolute;
-           top: 50%;
-           left: 50%;
-           transform: translate(-50%, -50%);
-           padding: 10px;
-           white-space: pre; /* Pour conserver les retours à la ligne */
-       }
+        /* Réduire la marge sur les petits écrans */
+        .commande-label,
+        .commande-field,
+        .Categorie-label {
+            margin: 5px 0;
+        }
 
-       /* Augmenter la hauteur des listes déroulantes */
-       select {
-           font-size: 22px; /* Augmenter la taille de la police */
-           padding: 10px; /* Ajuster la hauteur de la liste déroulante */
-       }
+        /* Autres styles spécifiques aux petits écrans */
+    }
 
-       .footer {
-           display: none;
-       }
+    /* Styles pour le header */
+    .header {
+        background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
+        height: 170px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        position: relative;
+        text-align: center;
+    }
 
-       .commande-label {
-           font-weight: bold;
-           font-size: 22px;
-           color: red;
-           margin-top: 20px;
-           text-align: center;
-       }
+    .header:before {
+        content: "SO Châtellerault \A Saison 2023/2024";
+        font-family: Arial, sans-serif;
+        font-size: 55px;
+        color: white;
+        text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 10px;
+        white-space: pre; /* Pour conserver les retours à la ligne */
+    }
 
-       .commande-field {
-           border: none;
-           outline: none;
-           background-color: transparent;
-           font-size: 1.375rem;
-       }
+    /* Styles pour le footer */
+    .footer {
+        display: none;
+    }
 
-       .prochain-match-label {
-           font-weight: bold;
-           font-size: 26px;
-           color: orange;
-           margin-top: 20px;
-           text-align: left;
-       }
-
-       .Categorie-label {
-           font-weight: bold;
-           text-decoration: underline;
-           font-size: 20px;
-           color: black;
-           margin-top: 15px;
-           text-align: left;
-       }
-   </style>
+    /* Autres styles pour les différents éléments de votre page */
+</style>
    <script>
 
        // Définir les prix comme constantes - Ici il faut ajouter les prix
