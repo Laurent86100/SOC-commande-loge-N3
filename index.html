@@ -323,7 +323,7 @@ if (typeof prixBiere === 'number' && typeof prixCCharcuterie === 'number' && typ
        </div>
 
        <div class="commande-field">
-           <label for="quantiteBiere">Quantité de Bière (0-9) :</label><br>
+           <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
            <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();" class="select-field">
                ${generateQuantityOptions()}
            </select><br><br><br>
