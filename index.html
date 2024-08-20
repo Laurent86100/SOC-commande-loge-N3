@@ -1,389 +1,370 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-   <title>Commande Loge N3</title>
-   <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-        font-size: 20px; /* Taille de police par défaut pour les écrans plus grands */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commande Loge N3</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+        }
 
-    /* Positionnement de l'image en haut à droite */
-    .logo {
-        position: absolute;
-        top: 15px;
-        right: 10px;
-        width: 150px;
-        height: auto;
-    }
-      
-    /* Augmenter la taille du bouton "Passer la commande" */
-    #passerCommandeBtn {
-        font-size: 26px;
-        padding: 15px 30px;
-    }
+        /* Navigation bar styles */
+        .navbar {
+            background-color: #333;
+            overflow: hidden;nc
+        }
 
-    #nom {
-        height: 50px; /* Hauteur de l'input */
-        font-size: 40px; /* Taille de la police */
-        font-weight: bold;
-    }
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 22px;
+        }
 
-    #numeroLoge {
-        height: 50px; /* Hauteur de la liste déroulante */
-        font-size: 40px; /* Taille de la police */
-        font-weight: bold;
-    }
+        .navbar a#commandes-tab {
+            font-weight: bold;
+        }
 
-    /* Styles pour le header */
-    .header {
-        background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
-        height: 170px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: white;
-        position: relative;
-        text-align: center;
-    }
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
 
-    .header:before {
-        content: "SO Châtellerault \A Saison 2023/2024";
-        font-family: Arial, sans-serif;
-        font-size: 55px;
-        color: white;
-        text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 10px;
-        white-space: pre; /* Pour conserver les retours à la ligne */
-    }
+        /* Section styles */
+        .section {
+            display: none;
+            padding: 20px;
+        }
 
-    /* Styles pour le footer */
-    .footer {
-        display: none;
-    }
+        .section.active {
+            display: block;
+        }
 
-    /* Autres styles pour les différents éléments de votre page */
-    .commande-label {
-        font-weight: bold;
-        font-size: 22px;
-        color: red;
-        margin-top: 20px;
-        text-align: center;
-    }
+        /* Tile container */
+        .tiles-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
 
-    .commande-field {
-        border: none;
-        outline: none;
-        background-color: transparent;
-        font-size: 26px !important; /* Utilisez !important pour forcer la priorité */
-    }
+        /* Each tile */
+        .tile {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            width: 220px;
+            text-align: center;
+            padding: 10px;
+            background-color: #f9f9f9;
+        }
 
-    .prochain-match-label {
-        font-weight: bold;
-        font-size: 26px;
-        color: orange;
-        margin-top: 20px;
-        text-align: left;
-    }
+        .tile img {
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
 
-    .Categorie-label {
-        font-weight: bold;
-        text-decoration: underline;
-        font-size: 22px;
-        color: black;
-        margin-top: 15px;
-        text-align: left;
-    }
+        .tile h3 {
+            font-size: 20px;
+            margin: 10px 0;
+        }
 
-    .select-field {
-        height: 50px; /* Hauteur de la liste déroulante */
-        font-size: 40px; /* Taille de la police */
-        font-weight: bold;
-        color: Red;
-    }
+        .tile p {
+            font-size: 18px;
+            margin: 0;
+            color: #555;
+        }
 
-    /* Style pour chaque paire label-input */
-    .form-group {
-        margin-bottom: 20px;
-    }
+        .tile select {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+            width: 100%;
+        }
 
-    label {
-        display: block;
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
+        /* Other existing styles */
+        .logo {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            width: 150px;
+            height: auto;
+        }
 
-    input[type="text"] {
-        width: 100%;
-        padding: 10px;
-        font-size: inherit;
-    }
+        .header {
+            background: linear-gradient(to bottom, rgb(255, 0, 0), rgb(255, 51, 51));
+            height: 170px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
 
-    .commande-label {
-        font-size: 24px !important;
-        font-weight: bold !important;
-    }
+        .header:before {
+            content: "SO Châtellerault \A Saison 2023/2024";
+            font-size: 55px;
+            color: white;
+            text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px;
+            white-space: pre;
+        }
 
-   </style>
-   <script>
-       // Définir les prix comme constantes
-       const prixBiere = 8;
-       const prixCharcuterie = 12;
-       const prixLegumes = 8;
-       const prixSoda = 1.5;
-       const prixChampagne = 23;
+        .footer {
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            showSection('accueil');
+            updateCommandCount(); // Initialize command count
+        }
+	window.onload = function() {
+    	    showSection('accueil');
+            populateSelects();  // Populate all select elements with options 0-9
+            updateCommandCount(); // Initialize command count
+        }
 
-       function generateQuantityOptions() {
-           var options = "";
-           for (var i = 0; i <= 9; i++) {
-               options += `<option value="${i}">${i}</option>`;
-           }
-           return options;
-       }
+        function populateSelects() {
+    	    const options = `
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+    `;
 
-       window.onload = function() {
-           document.getElementById("quantiteBiere").innerHTML = generateQuantityOptions();
-           document.getElementById("quantitePlateauCharcuterie").innerHTML = generateQuantityOptions();
-           document.getElementById("quantitePlateauLegumes").innerHTML = generateQuantityOptions();
-           document.getElementById("quantiteCoca").innerHTML = generateQuantityOptions();
-           document.getElementById("quantiteOrangina").innerHTML = generateQuantityOptions();
-           document.getElementById("quantiteIcetea").innerHTML = generateQuantityOptions();
-           document.getElementById("quantiteChampagne").innerHTML = generateQuantityOptions();
-       }
-
-       function calculateTotal() {
-           var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value);
-           var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
-           var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
-           var quantiteCoca = parseInt(document.getElementById("quantiteCoca").value);
-           var quantiteOrangina = parseInt(document.getElementById("quantiteOrangina").value);
-           var quantiteIcetea = parseInt(document.getElementById("quantiteIcetea").value);
-           var quantiteChampagne = parseInt(document.getElementById("quantiteChampagne").value);
-
-           var totalBiere = quantiteBiere * prixBiere;
-           var totalCCharcuterie = quantitePlateauCharcuterie * prixCharcuterie;
-           var totalCLegumes = quantitePlateauLegumes * prixLegumes;
-           var totalCoca = quantiteCoca * prixSoda;
-           var totalOrangina = quantiteOrangina * prixSoda;
-           var totalIcetea = quantiteIcetea * prixSoda;
-           var totalChampagne = quantiteChampagne * prixChampagne;
-
-           var total = totalBiere + totalCCharcuterie + totalCLegumes + totalCoca + totalOrangina + totalIcetea + totalChampagne ;
-
-           var totalProduits = quantiteBiere + quantitePlateauCharcuterie + quantitePlateauLegumes + quantiteCoca + quantiteOrangina + quantiteIcetea + quantiteChampagne;
-
-           var nombreProduitsElement = document.getElementById("nombreProduitsDisplay");
-           nombreProduitsElement.textContent = totalProduits;
-
-           var totalCommandeElement = document.getElementById("totalCommandeDisplay");
-           totalCommandeElement.textContent = total + "€";
-       }
-
-function validateForm() {
-    var nom = document.getElementById("nom").value;
-    var numeroLoge = document.getElementById("numeroLoge").value;
-    var passerCommandeBtn = document.getElementById("passerCommandeBtn");
-
-    if (nom.trim() !== "" && numeroLoge !== "" && numeroLoge !== "Choisir...") {
-        passerCommandeBtn.disabled = false;
-    } else {
-        passerCommandeBtn.disabled = true;
-    }
+    const selects = document.querySelectorAll('.tile select');
+    selects.forEach(select => {
+        select.innerHTML = options;
+    });
 }
 
-       function createOrderSummary() {
-           var orderSummary = "";
-           var total = 0;
+        function showSection(sectionId) {
+            var sections = document.getElementsByClassName('section');
+            for (var i = 0; i < sections.length; i++) {
+                sections[i].classList.remove('active');
+            }
+            document.getElementById(sectionId).classList.add('active');
+        }
 
-           var quantiteBiere = parseInt(document.getElementById("quantiteBiere").value);
-           var quantitePlateauCharcuterie = parseInt(document.getElementById("quantitePlateauCharcuterie").value);
-           var quantitePlateauLegumes = parseInt(document.getElementById("quantitePlateauLegumes").value);
-           var quantiteCoca = parseInt(document.getElementById("quantiteCoca").value);
-           var quantiteOrangina = parseInt(document.getElementById("quantiteOrangina").value);
-           var quantiteIcetea = parseInt(document.getElementById("quantiteIcetea").value);
-           var quantiteChampagne = parseInt(document.getElementById("quantiteChampagne").value);
+        function updateCommandCount() {
+    const selects = document.querySelectorAll('.tile select');
+    let count = 0;
+
+    selects.forEach(select => {
+        if (select.value > 0) {
+            count++;
+        }
+    });
+
+    const commandTab = document.getElementById('commandes-tab');
+    commandTab.innerHTML = `Commandes <span style="color:blue; font-weight:bold;">(${count})</span>`;
+
+    updateOrderDetails(); // Update order details as well
+}
+
+          function updateOrderDetails() {
+    const products = [
+        { name: "Bouteille de champagne", price: 23 },
+        { name: "Bière (Pichet 1L)", price: 8 },
+        { name: "Coca-Cola (Canette 33cl)", price: 1.5 },
+        { name: "Orangina (Canette 33cl)", price: 1.5 },
+        { name: "Ice tea (Canette 33cl)", price: 1.5 },
+        { name: "Assortiment de charcuteries", price: 12 },
+        { name: "Assortiment de légumes", price: 8 }
+    ];
+
+    let orderDetails = '';
+    let total = 0;
+
+    const selects = document.querySelectorAll('.tile select');
+    selects.forEach((select, index) => {
+        const quantity = parseInt(select.value);
+        if (quantity > 0) {
+            const productTotal = quantity * products[index].price;
+            orderDetails += `${products[index].name}: ${quantity} x ${products[index].price}€ = ${productTotal}€<br>`;
+            total += productTotal;
+        }
+    });
+
+    document.getElementById('orderDetails').innerHTML = orderDetails ? orderDetails : "Aucun produit sélectionné.";
+    document.getElementById('totalCommande').textContent = total + "€";
+}
 
 
-           if (quantiteBiere > 0) {
-               orderSummary += "Quantité de Bière: " + quantiteBiere + "\n";
-               total += quantiteBiere * prixBiere;
-           }
-
-           if (quantitePlateauCharcuterie > 0) {
-               orderSummary += "Quantité de Plateau Charcuterie: " + quantitePlateauCharcuterie + "\n";
-               total += quantitePlateauCharcuterie * prixCharcuterie;
-           }
-
-           if (quantitePlateauLegumes > 0) {
-               orderSummary += "Quantité de Plateau Légumes: " + quantitePlateauLegumes + "\n";
-               total += quantitePlateauLegumes * prixLegumes;
-           }
-
-           if (quantiteCoca > 0) {
-               orderSummary += "Quantité de Coca: " + quantiteCoca + "\n";
-               total += quantiteCoca * prixSoda;
-           }
-
-           if (quantiteOrangina > 0) {
-               orderSummary += "Quantité d'Orangina: " + quantiteOrangina + "\n";
-               total += quantiteOrangina * prixSoda;
-           }
-
-           if (quantiteIcetea > 0) {
-               orderSummary += "Quantité d'Ice tea: " + quantiteIcetea + "\n";
-               total += quantiteIcetea * prixSoda;
-           }
-
-           if (quantiteChampagne > 0) {
-               orderSummary += "Quantité de champagne: " + quantiteChampagne + "\n";
-               total += quantiteChampagne * prixChampagne;
-           }
-
-           orderSummary += "Total: " + total + "€\n";
-
-           var hiddenField = document.getElementById("orderSummary");
-           hiddenField.value = orderSummary;
-       }
-   </script>
+    </script>
 </head>
 <body>
-   <div class="header"></div>
+    <div class="navbar">
+        <a href="javascript:void(0);" onclick="showSection('accueil')">Accueil</a>
+        <a href="javascript:void(0);" onclick="showSection('produits')">Produits</a>
+        <a href="javascript:void(0);" onclick="showSection('commandes')" id="commandes-tab">Commandes (0)</a>
+    </div>
 
-   <h1>Loge N3 - Commandes en ligne</h1>
+    <div class="header"></div>
 
-   <div class="prochain-match-label">
-       Match du jour : SO Chatellerault - FC Ouest Tourangeau<br>
-       24 Fevrier 2024 - 18h00<br>
-       --------------------------------------------------------<br>
-       Prochain match : SO Chatellerault - FC Tours<br>
-       16 Mars 2024 - 18h00<br><br>
-   </div>
-   
-    <form id="sandwich-form" action="https://formspree.io/f/mjvqrydl" method="POST" onsubmit="validateForm(); createOrderSummary();">
-   <div class="commande-label">
-       <hr style="width: 50%; margin: 0 auto;">
-       Informations Commandes:
-   </div>
+    <!-- Accueil Section -->
+    <div id="accueil" class="section">
+        <h1>Bienvenue à la Loge N3</h1>
+        <div class="prochain-match-label">
+            Match du jour : SO Chatellerault - FC Ouest Tourangeau<br>
+            24 Février 2024 - 18h00<br>
+            --------------------------------------------------------<br>
+            Prochain match : SO Chatellerault - FC Tours<br>
+            16 Mars 2024 - 18h00<br><br>
+        </div>
+    </div>
 
-   <div class="form-group">
-       <label for="nom">Nom du sponsor</label>
-       <input type="text" id="nom" name="Nom de la commande:" required oninput="validateForm()">
-   </div>
+    <!-- Produits Section -->
+    <div id="produits" class="section">
+        <h1>Nos Produits</h1>
+        <div class="tiles-container">
+            <!-- Tile for Champagne -->
+            <div class="tile">
+                <img src="https://www.example.com/champagne.jpg" alt="Bouteille de champagne">
+                <h3>Bouteille de champagne</h3>
+                <p>23€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
 
-<div class="form-group">
-    <label for="numeroLoge">Numéro de loge :</label>
-    <select id="numeroLoge" name="Numéro de loge:" onchange="validateForm();" oninput="validateForm();">
-        <option value="" selected disabled>Choisir...</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
-        <option value="8">8</option>
-    </select>
-</div><br>
+            <!-- Tile for Bière -->
+            <div class="tile">
+                <img src="https://www.example.com/biere.jpg" alt="Bière (Pichet 1L)">
+                <h3>Bière (Pichet 1L)</h3>
+                <p>8€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
 
-       <div class="commande-label">
-           <hr style="width: 50%; margin: 0 auto;">
-           Tarifs et conditions de vente :
-       </div>
+            <!-- Tile for Coca-Cola -->
+            <div class="tile">
+                <img src="https://www.example.com/coca.jpg" alt="Coca-Cola (Canette 33cl)">
+                <h3>Coca-Cola (Canette 33cl)</h3>
+                <p>1.5€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
+
+            <!-- Tile for Orangina -->
+            <div class="tile">
+                <img src="https://www.example.com/orangina.jpg" alt="Orangina (Canette 33cl)">
+                <h3>Orangina (Canette 33cl)</h3>
+                <p>1.5€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
+
+            <!-- Tile for Ice tea -->
+            <div class="tile">
+                <img src="https://www.example.com/icetea.jpg" alt="Ice tea (Canette 33cl)">
+                <h3>Ice tea (Canette 33cl)</h3>
+                <p>1.5€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
+
+            <!-- Tile for Plateau Charcuterie -->
+            <div class="tile">
+                <img src="https://www.example.com/charcuterie.jpg" alt="Assortiement de charcuteries">
+                <h3>Assortiment de charcuteries</h3>
+                <p>12€</p>
+                <select onchange="updateCommandCount()">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+            </div>
+
+            <!-- Tile for Plateau Légumes -->
+            <div class="tile">
+                <img src="https://www.example.com/legumes.jpg" alt="Assortiment de légumes">
+                <h3>Assortiment de légumes</h3>
+                <p>8€</p>
+                <select onchange="updateCommandCount()">
+                    ${generateQuantityOptions()}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="commandes" class="section">
+    <h1>Loge N3 - Commandes en ligne</h1>
+    <form id="sandwich-form" action="https://formspree.io/f/mjvqrydl" method="POST">
+        <div class="form-group">
+            <label for="nom">Nom du sponsor</label>
+            <input type="text" id="nom" name="Nom de la commande:" required>
+        </div>
+
+        <div class="form-group">
+            <label for="numeroLoge">Numéro de loge :</label>
+            <select id="numeroLoge" name="Numéro de loge:">
+                <option value="" selected disabled>Choisir...</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+            </select>
+        </div>
+
+        <!-- Détail de la commande -->
+        <div class="form-group">
+            <br>
+            <label style="font-weight:bold;">Détail de la commande :</label>
+            <div id="orderDetails"></div>
+        </div>
+
+        <!-- Total commande -->
+        <div class="form-group">
+            <br>
+            <br>
+            <label for="totalCommande">Total commande:</label>
+            <span id="totalCommande">0€</span>
+        </div>
+
+        <input type="submit" value="Passer la commande"><br><br>
+    </form>
+</div>
 
 
-       <div class="Categorie-label">
-           Boissons :
-       </div>
-
-       <div class="commande-field">
-           Bouteille de champagne : 23€<br>
-           Bière (Pichet 1L) : 8€<br>
-           Coca-Cola (Canette 33cl) : 1.5€<br>
-           Orangina (Canette 33cl) : 1.5€<br>
-           Ice tea (Canette 33cl) : 1.5€<br>
-       </div>    
-   
-       <div class="Categorie-label">
-           Plateaux :
-       </div>
-
-      <div class="commande-field">
-           Assortiement de charcuteries 12€<br>
-           Assortiment de légumes 8€<br>
-      </div><br>
-
-       <div class="commande-label">
-           <hr style="width: 50%; margin: 0 auto;">
-           Ma commande
-       </div>
-
-       <div class="Categorie-label">
-           Boissons :
-       </div>
-
-       <div class="commande-field">
-           <label for="quantiteChampagne">Quantité de champagne (0-9) :</label>
-           <select id="quantiteChampagne" name="Quantité de champagne:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br><br><br>
-           <label for="quantiteBiere">Quantité de Bière (0-9) :</label>
-           <select id="quantiteBiere" name="Quantité de Bière:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br><br><br>
-           <label for="quantiteCoca">Quantité de Coca (0-9) :</label><br>
-           <select id="quantiteCoca" name="Quantité de Coca-Cola:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br><br><br>
-           <label for="quantiteOrangina">Quantité d'Orangina (0-9) :</label><br>
-           <select id="quantiteOrangina" name="Quantité d'Orangina:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br><br><br>
-           <label for="quantiteIcetea">Quantité d'Ice tea (0-9) :</label><br>
-           <select id="quantiteIcetea" name="Quantité d'Ice tea:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br><br><br>
-       </div>
-
-       <div class="Categorie-label">
-           Plateaux :
-       </div>
-
-       <div class="commande-field">
-           <label for="quantitePlateauCharcuterie">Quantité de Plateau Charcuterie (0-9) :</label><br>
-           <select id="quantitePlateauCharcuterie" name="Quantité de Plateau Charcuterie:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br>
-           <label for="quantitePlateauLegumes">Quantité de Plateau Légumes (0-9) :</label><br>
-           <select id="quantitePlateauLegumes" name="Quantité de Plateau Légumes:" onchange="calculateTotal(); validateForm();" class="select-field">
-               ${generateQuantityOptions()}
-           </select><br>     
-       </div>
-
-       <div class="commande-label">
-           <hr style="width: 50%; margin: 0 auto;">
-           Synthèse du panier
-       </div><br>
-
-       <div>
-           <label for="nombreProduits">Nombre de produits commandés:</label>
-           <span class="custom-text" id="nombreProduitsDisplay">0</span>
-       </div><br>
-       <div>
-           <label for="totalCommande">Total:</label>
-           <span class="custom-text" id="totalCommandeDisplay">0€</span>
-       </div><br><br>
-
-       <input type="hidden" id="orderSummary" name="Order Summary">
-       <input type="hidden" name="_subject" value="Nouvelle commande">
-       <input type="submit" id="passerCommandeBtn" value="Passer la commande" disabled><br><br>
-   </form>
-   <div class="footer"></div>
-   <img class="logo" src="https://seeklogo.com/images/S/so-chatellerault-logo-6DB6DD8476-seeklogo.com.png" alt="Logo">
+    <div class="footer"></div>
+    <img class="logo" src="https://seeklogo.com/images/S/so-chatellerault-logo-6DB6DD8476-seeklogo.com.png" alt="Logo">
 </body>
 </html>
