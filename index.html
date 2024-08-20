@@ -15,14 +15,15 @@
 
         /* Navigation bar styles */
         .navbar {
-            background-color: #333;
+            background-color: #F5E9E1;
             overflow: hidden;nc
         }
 
         .navbar a {
             float: left;
             display: block;
-            color: white;
+            color: Black;
+            font-weight: bold;
             text-align: center;
             padding: 14px 20px;
             text-decoration: none;
@@ -113,7 +114,7 @@
         }
 
         .header:before {
-            content: "SO Châtellerault \A Saison 2023/2024";
+            content: "SO Châtellerault \A Saison 2024/2025";
             font-size: 30px;
             color: white;
             text-shadow: -2px -2px 0 rgb(204, 102, 0), 2px -2px 0 rgb(204, 102, 0), -2px 2px 0 rgb(204, 102, 0), 2px 2px 0 rgb(204, 102, 0);
@@ -179,7 +180,7 @@
     });
 
     const commandTab = document.getElementById('commandes-tab');
-    commandTab.innerHTML = `Commandes <span style="color:blue; font-weight:bold;">(${count})</span>`;
+    commandTab.innerHTML = `Commandes <span style="color:red; font-weight:bold;">(${count})</span>`;
 
     updateOrderDetails(); // Update order details as well
 }
