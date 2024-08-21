@@ -173,7 +173,10 @@ body {
                 width: 100%; /* Make tiles take full width */
                 padding: 15px;
             }
-
+ .tile img {
+         max-height: 200px; /* Fixe une hauteur maximale pour l'image sur les petits écrans */
+         width: auto; /* Recadre l'image si nécessaire pour qu'elle rentre dans le conteneur */
+    }
             .tile h3 {
                 font-size: 18px;
             }
@@ -327,7 +330,7 @@ function prepareFormData() {
         <div class="tiles-container">
             <!-- Tile for Champagne -->
             <div class="tile">
-                <img src="https://photos.fife.usercontent.google.com/pw/AP1GczOW-68DnAJcGzld7o6NHP1633rxs2Z7lLjRdjrAzE7i6Fc-LOqCkWEh=w800-h800-s-no?authuser=0" alt="Bouteille de champagne">
+                <img src="https://imgur.com/ifTLNVs.jpg" alt="Bouteille de champagne">
                 <h3>Bouteille de champagne</h3>
                 <p>23€</p>
                 <select onchange="updateCommandCount()">
@@ -337,7 +340,7 @@ function prepareFormData() {
 
             <!-- Tile for Bière -->
             <div class="tile">
-                <img src="https://www.example.com/biere.jpg" alt="Bière (Pichet 1L)">
+                <img src="https://imgur.com/d8nq4GW.jpg" alt="Bière (Pichet 1L)">
                 <h3>Bière (Pichet 1L)</h3>
                 <p>8€</p>
                 <select onchange="updateCommandCount()">
@@ -347,7 +350,7 @@ function prepareFormData() {
 
             <!-- Tile for Coca-Cola -->
             <div class="tile">
-                <img src="https://photos.google.com/u/0/share/AF1QipMrwfxzygBHvcmB_7ZdEt4wIjvfnhpv5LVxNWZuwub315yYFKr8zXxUdRpi6h0UXQ/photo/AF1QipO8U7KqzcBy0S2cZA9Z5J5bC64cjeKJ7IBR9FEq?key=UzlqcmRybEhfZDJ6bWZpSXBvdXNwUVdtUUp4M093&hl=fr_CA" alt="Coca-Cola (Canette 33cl)">
+                <img src="https://i.imgur.com/ktPeeml.jpg" alt="Coca-Cola (Canette 33cl)">
                 <h3>Coca-Cola (Canette 33cl)</h3>
                 <p>1.5€</p>
                 <select onchange="updateCommandCount()">
@@ -357,7 +360,7 @@ function prepareFormData() {
 
             <!-- Tile for Orangina -->
             <div class="tile">
-                <img src="https://www.example.com/orangina.jpg" alt="Orangina (Canette 33cl)">
+                <img src="https://imgur.com/WkHpdCd.jpg" alt="Orangina (Canette 33cl)">
                 <h3>Orangina (Canette 33cl)</h3>
                 <p>1.5€</p>
                 <select onchange="updateCommandCount()">
@@ -365,9 +368,9 @@ function prepareFormData() {
                 </select>
             </div>
 
-            <!-- Tile for Ice tea -->
+            <!-- Tile for Oasis -->
             <div class="tile">
-                <img src="https://www.example.com/icetea.jpg" alt="Ice tea (Canette 33cl)">
+                <img src="https://imgur.com/MGvB2kJ.jpg" alt="Ice tea (Canette 33cl)">
                 <h3>Ice tea (Canette 33cl)</h3>
                 <p>1.5€</p>
                 <select onchange="updateCommandCount()">
@@ -452,7 +455,7 @@ function prepareFormData() {
             <br>
         </div>
 
-        <input type="submit" value="Passer la commande" style="font-size: 16px;color:red; font-weight:bold">
+        <input type="submit" value="Passer la commande" style="font-size: 16px;color:white; font-weight:bold">
     </form>
 </div>
 
