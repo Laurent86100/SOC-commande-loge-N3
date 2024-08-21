@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commande Loge N3</title>
-    <style>
+ <style>
         /* Base styles */
         body {
             margin: 0;
@@ -16,7 +16,7 @@
         /* Navigation bar styles */
         .navbar {
             background-color: #333;
-            overflow: hidden;nc
+            overflow: hidden;
         }
 
         .navbar a {
@@ -129,6 +129,67 @@
         .footer {
             display: none;
         }
+
+        /* Media Queries for Mobile Devices */
+        @media only screen and (max-width: 600px) {
+            
+            /* Adjust Navbar */
+            .navbar a {
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            /* Adjust header */
+            .header {
+                height: 100px;
+            }
+
+            .header:before {
+                font-size: 20px;
+            }
+
+            /* Stack tiles vertically on small screens */
+            .tiles-container {
+                flex-direction: column;
+                gap: 10px;
+                padding: 0 10px;
+            }
+
+            /* Adjust tile size */
+            .tile {
+                width: 100%; /* Make tiles take full width */
+                padding: 15px;
+            }
+
+            .tile h3 {
+                font-size: 18px;
+            }
+
+            .tile p, .tile select {
+                font-size: 14px;
+            }
+
+            /* Adjust logo */
+            .logo {
+                width: 80px;
+                top: 10px;
+            }
+
+            /* Adjust font sizes in form */
+            .form-group label {
+                font-size: 16px;
+            }
+
+            #nom, #numeroLoge {
+                font-size: 16px;
+            }
+
+            /* Adjust details and total */
+            #orderDetails, #totalCommande {
+                font-size: 16px;
+            }
+        }
+
     </style>
     <script>
         window.onload = function() {
